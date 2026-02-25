@@ -8,7 +8,6 @@
     "htk": "./bin/htk.js",
     "nextjs-htk": "./bin/htk.js"
   },
-  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
