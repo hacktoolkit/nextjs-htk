@@ -17,6 +17,55 @@ This package requires:
 - react >= 19.0.0
 - react-dom >= 19.0.0
 
+## CLI Tool
+
+The package includes a CLI tool for project standardization and template management.
+
+### Quick Start
+
+```bash
+# Initialize a new project with standard files
+npx htk init
+
+# Sync templates from latest version
+npx htk sync
+
+# Show all available commands
+npx htk help
+```
+
+### Available Commands
+
+- **`htk init`** - Initialize new project with Makefile, scripts, and configs
+- **`htk sync`** - Update all templates to latest version
+- **`htk sync:makefile`** - Sync only the Makefile
+- **`htk sync:scripts`** - Sync only the scripts directory
+
+### Force Overwrite
+
+By default, existing files won't be overwritten. Use `--force` or `-f`:
+
+```bash
+npx htk sync --force
+npx htk init -f
+```
+
+### What Gets Installed
+
+**Makefile** - Standard targets for development and deployment:
+- `make dev` - Start development server
+- `make build` - Build for production
+- `make deploy` - Deploy to GitHub Pages
+- `make help` - Show all available targets
+
+**Scripts** - Utility scripts for your project:
+- `src/scripts/generate_sitemap.ts` - Auto-generate sitemap.xml
+
+**Next.js Config Template** - React 19 compatible configuration with:
+- Webpack alias configuration for single React instance
+- Static export settings for GitHub Pages
+- Source maps enabled for debugging
+
 ## Usage
 
 ### Configuration
@@ -43,6 +92,36 @@ export default defineConfig({
   },
 })
 ```
+
+## Utilities
+
+### Sitemap Generator
+
+Generate SEO-friendly sitemaps from your site configuration:
+
+```typescript
+import { generateSitemap } from '@nextjs-htk/core/utils'
+import type { SitemapConfig } from '@nextjs-htk/core/utils'
+
+const config: SitemapConfig = {
+  siteUrl: 'https://example.com',
+  pages: [
+    { name: 'Home', path: '/', showInNav: true },
+    { name: 'About', path: '/about/', showInNav: true }
+  ],
+  additionalPages: [
+    {
+      path: '/blog/post-1/',
+      priority: 0.7,
+      changefreq: 'weekly'
+    }
+  ]
+}
+
+const sitemap = generateSitemap(config)
+```
+
+The generated script (`src/scripts/generate_sitemap.ts`) automatically uses your `htk.config.ts` to generate the sitemap during build.
 
 ## Components
 

@@ -1,9 +1,13 @@
 {
-  "name": "@nextjs-htk/core",
+  "name": "@hacktoolkit/nextjs-htk",
   "version": "0.1.0",
   "description": "Core components and utilities for nextjs-htk framework",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "htk": "./bin/htk.js",
+    "nextjs-htk": "./bin/htk.js"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -12,15 +16,18 @@
     },
     "./components": {
       "types": "./dist/components/index.d.ts",
-      "import": "./dist/components/index.js"
+      "import": "./dist/components/index.js",
+      "require": "./dist/components/index.js"
     },
-    "./hooks": {
-      "types": "./dist/hooks/index.d.ts",
-      "import": "./dist/hooks/index.js"
+    "./context": {
+      "types": "./dist/context/index.d.ts",
+      "import": "./dist/context/index.js",
+      "require": "./dist/context/index.js"
     },
     "./utils": {
       "types": "./dist/utils/index.d.ts",
-      "import": "./dist/utils/index.js"
+      "import": "./dist/utils/index.js",
+      "require": "./dist/utils/index.js"
     }
   },
   "scripts": {
@@ -45,8 +52,8 @@
     "sass": "^1.69.5"
   },
   "devDependencies": {
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "typescript": "^5.3.3"
   },
   "keywords": [
@@ -71,7 +78,10 @@
     "access": "public"
   },
   "files": [
+    "src",
     "dist",
+    "templates",
+    "bin",
     "README.md",
     "LICENSE"
   ]
