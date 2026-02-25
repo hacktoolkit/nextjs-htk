@@ -6,23 +6,72 @@ export interface SiteConfig {
     url: string
     author: string
   }
-  navigation: NavItem[]
+  branding?: {
+    logo?: string
+    slogan?: string
+    tagline?: string
+  }
+  business?: {
+    location?: {
+      address?: string
+      city?: string
+      state?: string
+      zip?: string
+      country?: string
+      phone?: string
+      email?: string
+    }
+    hours?: {
+      [key: string]: {
+        days: string
+        display: string
+      }
+    }
+    founding?: {
+      year?: number
+    }
+  }
+  navigation: Page[]
   footer: FooterConfig
-  social?: SocialLinks
+  social?: SocialMediaLinks
   theme?: ThemeConfig
   seo?: SEOConfig
   analytics?: AnalyticsConfig
 }
 
+export interface Page {
+  name: string
+  path: string
+  showInNav?: boolean
+  openInNewTab?: boolean
+}
+
 export interface NavItem {
   label: string
   href: string
+  target?: string
+  rel?: string
   children?: NavItem[]
 }
 
 export interface FooterConfig {
-  copyright: string
+  copyright?: string
+  showLocation?: boolean
+  showHours?: boolean
+  showSocial?: boolean
+  quickLinks?: NavItem[]
   links?: NavItem[]
+}
+
+export interface SocialMediaLink {
+  url: string
+  label: string
+  icon: React.ReactNode
+  title: string
+}
+
+export interface SocialMediaLinks {
+  [key: string]: SocialMediaLink | undefined
 }
 
 export interface SocialLinks {
@@ -35,6 +84,7 @@ export interface SocialLinks {
 }
 
 export interface ThemeConfig {
+  defaultTheme?: 'light' | 'dark'
   colors?: {
     primary?: string
     secondary?: string
@@ -48,6 +98,11 @@ export interface ThemeConfig {
 }
 
 export interface SEOConfig {
+  formatTitle?: (page?: string) => string
+  description?: {
+    default: string
+    [key: string]: string
+  }
   defaultImage?: string
   twitterCard?: 'summary' | 'summary_large_image' | 'app' | 'player'
 }
