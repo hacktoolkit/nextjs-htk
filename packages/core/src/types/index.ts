@@ -98,8 +98,8 @@ export interface ThemeConfig {
 }
 
 export interface SEOConfig {
-  formatTitle: (page?: string) => string
-  description: {
+  formatTitle?: (page?: string) => string
+  description?: {
     default: string
     [key: string]: string
   }

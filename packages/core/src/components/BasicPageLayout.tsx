@@ -68,7 +68,7 @@ export function BasicPageLayout({
       <div className={pageClassName}>
         <div className={containerClassName}>
           <h1 className={headingClassName}>{heading}</h1>
-          {intro && <p className={introClassName}>{intro}</p>}
+          {intro && <div className={introClassName}>{intro}</div>}
           {children && <div className={contentGridClassName}>{children}</div>}
         </div>
       </div>

@@ -1,13 +1,13 @@
-# @nextjs-htk/core
+# @hacktoolkit/nextjs-htk
 
 Core components, hooks, and utilities for the nextjs-htk framework.
 
 ## Installation
 
 ```bash
-npm install @nextjs-htk/core
+npm install @hacktoolkit/nextjs-htk
 # or
-pnpm add @nextjs-htk/core
+pnpm add @hacktoolkit/nextjs-htk
 ```
 
 ## Peer Dependencies
@@ -25,13 +25,13 @@ The package includes a CLI tool for project standardization and template managem
 
 ```bash
 # Initialize a new project with standard files
-npx htk init
+npx @hacktoolkit/nextjs-htk init
 
 # Sync templates from latest version
-npx htk sync
+npx @hacktoolkit/nextjs-htk sync
 
 # Show all available commands
-npx htk help
+npx @hacktoolkit/nextjs-htk help
 ```
 
 ### Available Commands
@@ -46,8 +46,8 @@ npx htk help
 By default, existing files won't be overwritten. Use `--force` or `-f`:
 
 ```bash
-npx htk sync --force
-npx htk init -f
+npx @hacktoolkit/nextjs-htk sync --force
+npx @hacktoolkit/nextjs-htk init -f
 ```
 
 ### What Gets Installed
@@ -73,7 +73,7 @@ npx htk init -f
 Create a `htk.config.ts` file:
 
 ```typescript
-import { defineConfig } from '@nextjs-htk/core'
+import { defineConfig } from '@hacktoolkit/nextjs-htk'
 
 export default defineConfig({
   site: {
@@ -100,8 +100,8 @@ export default defineConfig({
 Generate SEO-friendly sitemaps from your site configuration:
 
 ```typescript
-import { generateSitemap } from '@nextjs-htk/core/utils'
-import type { SitemapConfig } from '@nextjs-htk/core/utils'
+import { generateSitemap } from '@hacktoolkit/nextjs-htk/utils'
+import type { SitemapConfig } from '@hacktoolkit/nextjs-htk/utils'
 
 const config: SitemapConfig = {
   siteUrl: 'https://example.com',

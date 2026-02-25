@@ -1,13 +1,13 @@
 # nextjs-htk CLI
 
-The `@nextjs-htk/core` package includes a CLI tool to help standardize project setup and maintain consistency across all nextjs-htk projects.
+The `@hacktoolkit/nextjs-htk` package includes a CLI tool to help standardize project setup and maintain consistency across all nextjs-htk projects.
 
 ## Installation
 
-The CLI is automatically available when you install `@nextjs-htk/core`:
+The CLI is automatically available when you install `@hacktoolkit/nextjs-htk`:
 
 ```bash
-npm install @nextjs-htk/core
+npm install @hacktoolkit/nextjs-htk
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ npm install @nextjs-htk/core
 Copy all standard files (Makefile, scripts, etc.) to your project:
 
 ```bash
-npx htk init
+npx @hacktoolkit/nextjs-htk init
 ```
 
 Or if you have the package installed locally:
@@ -31,7 +31,7 @@ npm exec htk init
 Update your project with the latest templates from nextjs-htk:
 
 ```bash
-npx htk sync
+npx @hacktoolkit/nextjs-htk sync
 ```
 
 ### Sync specific files
@@ -39,13 +39,13 @@ npx htk sync
 Sync only the Makefile:
 
 ```bash
-npx htk sync:makefile
+npx @hacktoolkit/nextjs-htk sync:makefile
 ```
 
 Sync only the scripts directory:
 
 ```bash
-npx htk sync:scripts
+npx @hacktoolkit/nextjs-htk sync:scripts
 ```
 
 ### Force overwrite
@@ -53,8 +53,8 @@ npx htk sync:scripts
 By default, the CLI will not overwrite existing files. Use `--force` or `-f` to overwrite:
 
 ```bash
-npx htk init --force
-npx htk sync:makefile -f
+npx @hacktoolkit/nextjs-htk init --force
+npx @hacktoolkit/nextjs-htk sync:makefile -f
 ```
 
 ### Help
@@ -62,7 +62,7 @@ npx htk sync:makefile -f
 Show all available commands:
 
 ```bash
-npx htk help
+npx @hacktoolkit/nextjs-htk help
 ```
 
 ## What files are synced?
@@ -84,8 +84,8 @@ Standard Makefile with common targets:
 The package also exports utilities you can use in your code:
 
 ```typescript
-import { generateSitemap } from '@nextjs-htk/core/utils'
-import type { SitemapConfig } from '@nextjs-htk/core/utils'
+import { generateSitemap } from '@hacktoolkit/nextjs-htk/utils'
+import type { SitemapConfig } from '@hacktoolkit/nextjs-htk/utils'
 
 const config: SitemapConfig = {
   siteUrl: 'https://example.com',
@@ -142,18 +142,18 @@ The sitemap generation script integrates with your Next.js build:
 
 ```bash
 cd my-nextjs-htk-project
-npm install @nextjs-htk/core
-npx htk init
+npm install @hacktoolkit/nextjs-htk
+npx @hacktoolkit/nextjs-htk init
 ```
 
 ### Update to latest templates
 
 ```bash
-npx htk sync --force
+npx @hacktoolkit/nextjs-htk sync --force
 ```
 
 ### Just update the Makefile
 
 ```bash
-npx htk sync:makefile --force
+npx @hacktoolkit/nextjs-htk sync:makefile --force
 ```

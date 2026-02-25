@@ -8,26 +8,23 @@
     "htk": "./bin/htk.js",
     "nextjs-htk": "./bin/htk.js"
   },
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "import": "./dist/index.js"
     },
     "./components": {
       "types": "./dist/components/index.d.ts",
-      "import": "./dist/components/index.js",
-      "require": "./dist/components/index.js"
+      "import": "./dist/components/index.js"
     },
     "./context": {
       "types": "./dist/context/index.d.ts",
-      "import": "./dist/context/index.js",
-      "require": "./dist/context/index.js"
+      "import": "./dist/context/index.js"
     },
     "./utils": {
       "types": "./dist/utils/index.d.ts",
-      "import": "./dist/utils/index.js",
-      "require": "./dist/utils/index.js"
+      "import": "./dist/utils/index.js"
     }
   },
   "scripts": {
