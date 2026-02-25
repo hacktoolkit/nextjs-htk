@@ -1,10 +1,10 @@
 import fs from 'fs'
 import path from 'path'
-import { generateSitemap } from '@nextjs-htk/core/utils'
-import type { SitemapConfig } from '@nextjs-htk/core/utils'
+import { generateSitemap } from '@hacktoolkit/nextjs-htk/utils'
+import type { SitemapConfig } from '@hacktoolkit/nextjs-htk/utils'
 
 // Import your htk.config.ts
-const config = require('../../htk.config')
+import config from '../../htk.config'
 
 const sitemapConfig: SitemapConfig = {
   siteUrl: config.default.site.url,

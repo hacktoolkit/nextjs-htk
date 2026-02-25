@@ -37,5 +37,5 @@ build: clean install
 ## deploy - build and deploy the app
 deploy: build
 	git add $(BUILD_DIR)
-	git commit -m "Deploy `git rev-parse --verify HEAD`" --no-verify
-	git push origin master
+	git commit -m "Deploy `git rev-parse --verify HEAD`"
+	git push origin HEAD

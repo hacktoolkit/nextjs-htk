@@ -9,12 +9,14 @@ export interface GoogleAnalyticsProps {
   strategy?: 'afterInteractive' | 'lazyOnload' | 'beforeInteractive'
 }
 
+const GA_ID_PATTERN = /^(G-[A-Z0-9]+|UA-\d+-\d+|GT-[A-Z0-9]+|AW-[A-Z0-9]+)$/
+
 export function GoogleAnalytics({
   measurementId,
   strategy = 'afterInteractive'
 }: GoogleAnalyticsProps) {
-  // Don't render if no measurement ID or placeholder
-  if (!measurementId || measurementId.startsWith('[PLACEHOLDER')) {
+  // Don't render if no measurement ID or invalid format
+  if (!measurementId || !GA_ID_PATTERN.test(measurementId)) {
     return null
   }
 

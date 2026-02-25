@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 export interface ScrollToTopProps {
   /** Custom className for styling */
@@ -39,21 +39,17 @@ export function ScrollToTop({
   const [isVisible, setIsVisible] = useState(false)
 
   // Show button when page is scrolled up to given distance
-  const toggleVisibility = () => {
-    if (window.pageYOffset > threshold) {
-      setIsVisible(true)
-    } else {
-      setIsVisible(false)
-    }
-  }
+  const toggleVisibility = useCallback(() => {
+    setIsVisible(window.scrollY > threshold)
+  }, [threshold])
 
   // Set the scroll event listener
   useEffect(() => {
-    window.addEventListener('scroll', toggleVisibility)
+    window.addEventListener('scroll', toggleVisibility, { passive: true })
     return () => {
       window.removeEventListener('scroll', toggleVisibility)
     }
-  }, [threshold])
+  }, [toggleVisibility])
 
   // Scroll to top smoothly
   const scrollToTop = () => {

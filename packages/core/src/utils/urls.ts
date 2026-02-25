@@ -1,9 +1,9 @@
 /**
  * Creates a telephone URL for phone numbers
  */
-export function createPhoneUrl(phone: string): string {
+export function createPhoneUrl(phone: string, countryCode: string = '1'): string {
   const cleanPhone = phone.replace(/\D/g, '');
-  return `tel:+1${cleanPhone}`;
+  return `tel:+${countryCode}${cleanPhone}`;
 }
 
 /**

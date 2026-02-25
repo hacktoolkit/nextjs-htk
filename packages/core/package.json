@@ -78,7 +78,6 @@
     "access": "public"
   },
   "files": [
-    "src",
     "dist",
     "templates",
     "bin",

@@ -66,7 +66,7 @@ export interface FooterConfig {
 export interface SocialMediaLink {
   url: string
   label: string
-  icon: any
+  icon: React.ReactNode
   title: string
 }
 

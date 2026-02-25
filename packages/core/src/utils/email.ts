@@ -24,9 +24,9 @@ export const emailUtils = {
   encodeToEntities: (text: string) => {
     return text
       .split('')
-      .map((char) => {
+      .map((char, i) => {
         const code = char.charCodeAt(0);
-        return Math.random() > 0.5 ? `&#${code};` : `&#x${code.toString(16)};`;
+        return i % 2 === 0 ? `&#${code};` : `&#x${code.toString(16)};`;
       })
       .join('');
   },
