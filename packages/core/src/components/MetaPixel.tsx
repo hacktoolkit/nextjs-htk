@@ -41,51 +41,71 @@ export function MetaPixel({
           ${pageViewScript}
         `}
       </Script>
-      <noscript>
-        <img
-          height="1"
-          width="1"
-          style={{ display: 'none' }}
-          src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
-          alt=""
-        />
-      </noscript>
+      {!disablePageView && (
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
+            alt=""
+          />
+        </noscript>
+      )}
     </>
   )
 }
 
 /**
- * Track a Meta Pixel event
- * Call this function to track custom events after the pixel is loaded
+ * Track a standard Meta Pixel event
+ * Use this for Facebook's predefined standard events
+ *
+ * @see https://developers.facebook.com/docs/meta-pixel/reference#standard-events
  *
  * @example
- * // Standard event
  * trackMetaEvent('Lead')
  * trackMetaEvent('Purchase', { value: 99.99, currency: 'USD' })
- *
- * // Custom event
- * trackMetaEvent('CustomEvent', { custom_param: 'value' })
+ * trackMetaEvent('AddToCart', { content_ids: ['SKU123'], value: 29.99 })
  */
 export function trackMetaEvent(
   eventName: string,
   params?: Record<string, unknown>
 ) {
   if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
-    if (params) {
-      window.fbq('track', eventName, params)
-    } else {
-      window.fbq('track', eventName)
-    }
+    window.fbq('track', eventName, params)
+  }
+}
+
+/**
+ * Track a custom Meta Pixel event
+ * Use this for your own custom events (not Facebook's standard events)
+ *
+ * @see https://developers.facebook.com/docs/meta-pixel/reference#custom-events
+ *
+ * @example
+ * trackMetaCustomEvent('StartTrial')
+ * trackMetaCustomEvent('ShareContent', { content_type: 'article' })
+ */
+export function trackMetaCustomEvent(
+  eventName: string,
+  params?: Record<string, unknown>
+) {
+  if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+    window.fbq('trackCustom', eventName, params)
   }
 }
 
 // Extend Window interface for TypeScript
 declare global {
   interface Window {
-    fbq: (
-      action: string,
-      eventName: string,
-      params?: Record<string, unknown>
-    ) => void
+    fbq: {
+      (action: 'init', pixelId: string, options?: Record<string, unknown>): void
+      (
+        action: 'track' | 'trackCustom',
+        eventName: string,
+        params?: Record<string, unknown>
+      ): void
+      (action: string, ...args: unknown[]): void
+    }
   }
 }
