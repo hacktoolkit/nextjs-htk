@@ -3,7 +3,7 @@
 import Script from 'next/script'
 
 export interface MetaPixelProps {
-  /** Meta (Facebook) Pixel ID (e.g., '1275259234564588') */
+  /** Meta (Facebook) Pixel ID (e.g., '1234567890123456') */
   pixelId: string
   /** Load strategy (default: 'afterInteractive') */
   strategy?: 'afterInteractive' | 'lazyOnload' | 'beforeInteractive'
